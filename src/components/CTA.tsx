@@ -2,8 +2,26 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Clock, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 
 const CTA = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleStartSprint = () => {
+    if (user) {
+      // Navigate to first available sprint or skills page
+      navigate('/skills');
+    } else {
+      navigate('/auth');
+    }
+  };
+
+  const handleBrowseSkills = () => {
+    navigate('/skills');
+  };
+
   return (
     <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
       <div className="max-w-4xl mx-auto px-4 text-center">
@@ -28,6 +46,7 @@ const CTA = () => {
           <Button 
             size="lg" 
             className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            onClick={handleStartSprint}
           >
             Start Your Free Sprint
           </Button>
@@ -35,6 +54,7 @@ const CTA = () => {
             variant="outline" 
             size="lg"
             className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
+            onClick={handleBrowseSkills}
           >
             Browse Skills
           </Button>
