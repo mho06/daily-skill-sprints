@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/contexts/AuthContext';
-import { useToast } = '@/hooks/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, Play, CheckCircle } from 'lucide-react';
 
 interface Sprint {
